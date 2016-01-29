@@ -1,0 +1,33 @@
+<div class="well">
+	<form name="frmEvent" class="form-horizontal">
+		<div class="form-group">
+	  		<label>Event: </label>
+	  		<label>{{event.name}}</label>
+		</div>
+ 		<div class="form-group">
+	  		<label>Course: </label>
+	  		<label>{{event.course.name}}</label>
+		</div>
+ 		<div class="form-group">
+	  		<label>Date: </label>
+	  		<label>{{formatEventDate(event.date)}}</label>
+		</div>
+ 		<div class="form-group">
+	  		<label>Tee Times: </label>
+			<div class="teeTimeList" ng-repeat="teeTime in event.teeTimes | orderBy:'order'">
+		    	<span>{{teeTime.formatted}}</span>
+		    </div>
+		</div>
+ 		<ul class="list-group">
+		  <li class="list-group-item" ng-repeat="player in event.participants | orderBy:'lastName'">
+		    <span class="badge">10</span>
+		    {{formatNameLF(player)}}
+		  </li>
+		</ul>
+	    <div class="form-group">
+		    <div class="col-xs-12">
+		      <a class="btn btn-default form-control" ui-sref="home" role="button">Cancel</a>
+		    </div>
+	  </div>
+	</form>
+</div>

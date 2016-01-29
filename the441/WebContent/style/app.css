@@ -1,0 +1,95 @@
+body {
+	background-image: url('bkg.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: left center;
+	background-size: cover;
+}
+
+div.app,
+div.app>div.header,
+div.app>div.content,
+div.app>div.footer {
+	position: absolute;
+	left: 0px;
+	right: 0px
+}
+
+div.app {
+	overflow: hidden;
+}
+
+div.app,
+div.app>div.header {
+	top: 0px;
+}
+
+div.app,
+div.app>div.footer {
+	bottom: 0px;
+}
+
+div.app>div.header,
+div.app>div.footer {
+	height: 35px;
+	background-color: #1188CB
+}
+
+div.app>div.content {
+	top: 35px;
+	bottom: 35px;
+	background-color: #efefef;
+}
+
+div.app>div.header {
+	border-bottom: 1px solid #888;	
+	color: #EFEFEF;
+	padding-top: 3px;
+}
+
+div.app>div.header TH.title {
+	text-align: center;	
+}
+
+div.app>div.header .btn-menu,
+div.app>div.header .btn-menu:hover {
+	margin-left:1px;	
+	color: #EFEFEF;
+}
+
+div.app>div.footer {
+	border-top: 1px solid #888;
+	color: #EFEFEF;
+	padding-top: 6px;
+}
+
+div.app>div.header>TABLE,
+div.app>div.footer>TABLE {
+	width: 100%;
+	table-layout: fixed;
+}
+
+div.centered-vh {
+	position:absolute;
+	top:60px;
+	left:50%;
+	-ms-transform: translateX(-50%) translateY(-0%);
+	-webkit-transform: translate(-50%,-0%);
+	transform: translate(-50%,-0%);
+	-webkit-box-shadow: 0px 0px 44px 20px rgba(10,15,71,0.17);
+	-moz-box-shadow: 0px 0px 44px 20px rgba(10,15,71,0.17);
+	box-shadow: 0px 0px 44px 20px rgba(10,15,71,0.17);
+}
+
+div.alert {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	right: 5px;
+	z-index: 1;
+}
+
+.btn-logout,
+.btn-logout:hover {
+	color: #EFEFEF;
+}

@@ -1,0 +1,27 @@
+<div class="signup-form centered-vh">
+	<form>
+		<div class="form-content">
+			<div class="form-group">
+				<label class="control-label">Email</label>
+				<div>
+					<input type="email" validate-email class="form-control" id="email" ng-model="token.email" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword1" class="control-label">Password</label>
+				<div>
+					<input type="password" class="form-control" id="inputPassword1"  ng-model="token.password" />
+				</div>
+			</div>
+		</div>
+		<div class="form-group buttonbar">
+			<button type="button" class="btn btn-default pull-left" ng-click="clear()">Clear</button>
+			<button type="submit" class="btn btn-primary pull-right" ng-click="login()">Login</button>
+			<button type="button" class="btn btn-secondary pull-right" ng-click="register()">Register</button>
+		</div>
+	</form>
+</div>
+<div ng-show="errMsg" class="alert alert-danger alert-dismissible" role="alert">
+	<button type="button" class="close" ng-click="errMsg = null" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<strong>Error!</strong> {{errMsg}}
+</div>
