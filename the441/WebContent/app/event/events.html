@@ -30,17 +30,17 @@
 				<div class="form-group">
 					<label class="control-label">Tee Times</label>
 					<div>
-						<input ng-model="teetime" type="time" class="form-control" id="time" />
+						<select name="teetimeSelector" id="teetimeSelector" class="form-control" ng-model="pageData.selectedTeeTime" ng-options="teetime.formatted for teetime in pageData.availableTeeTimes | orderBy:'order'" > </select>
 					</div>
 				</div>
-				<div class="form-group">
-					<div class="teeTimeList" ng-repeat="teeTime in event.teeTimes | orderBy:'order'">
-				    	<span ng-show="!editMode">{{displayTeeTime(teeTime, event.teeTimes)}}</span>
-				    	<button ng-show="editMode" type="button" class="btn btn-default btn-xs" ng-click="removeTeeTime(teeTime)">
-		  					 {{teeTime.formatted}} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-						</button>
-				    </div>
-				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<div class="teeTimeList" ng-repeat="teeTime in event.teeTimes | orderBy:'order'"> -->
+<!-- 				    	<span ng-show="!editMode">{{displayTeeTime(teeTime, event.teeTimes)}}</span> -->
+<!-- 				    	<button ng-show="editMode" type="button" class="btn btn-default btn-xs" ng-click="removeTeeTime(teeTime)"> -->
+<!-- 		  					 {{teeTime.formatted}} <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+<!-- 						</button> -->
+<!-- 				    </div> -->
+<!-- 				</div> -->
 			</div>
 			<div class="form-group buttonbar">
 				<button type="button" class="btn btn-default pull-left" ng-click="close()">Cancel</button>

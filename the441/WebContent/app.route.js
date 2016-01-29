@@ -31,24 +31,36 @@
 						events : function(EventService) {
 							return EventService.getUpcomingEvents();
 						},
-						courses : function() {
-							return [
-								{
-									order : 0,
-									name: "South Hampton",
-									teetimeIncrement : 9
-								},
-								{
-									order : 20,
-									name: "Cimarron",
-									teetimeIncrement : 8
-								},
-								{
-									order : 10,
-									name: "St Johns",
-									teetimeIncrement : 10
-								}
-							];
+						courseData : function() {
+		        			return [ {id: 'crs1', name: 'Cimarrone', patronage : 'SEMI-PRIVATE', order : 2, teeTimeInterval: 8, teeTimeStart: 7, availableTeeTimes: []},                  
+		        			 		 {id: 'crs2', name: 'St Johns', patronage : "SEMI-PRIVATE", order : 1, teeTimeInterval: 10, teeTimeStart: 7, availableTeeTimes: []},
+		        			 		 {id: 'crs3', name: 'South Hampton', patronage : "SEMI-PRIVATE", order : 0, teeTimeInterval: 9, teeTimeStart: 7, availableTeeTimes: []}
+		        			];
+		        		},
+		        		courses : function (courseData) {
+		        			
+		        	    	angular.forEach(courseData, function(course){
+		        	    		var firstTime =  moment().hour(course.teeTimeStart).minute(0).second(0);
+		        	    		var firstTeeTime = {
+		        	    			order: 0,
+		        	    			formatted : firstTime.format('hh:mm A'),
+		        	    			utc : firstTime.toISOString()
+		        	    		};
+		        	    		
+		        	    		course.availableTeeTimes.push(firstTeeTime);
+		        	    		for(var i=0; i<70; i++) {
+		        	    			var priorTeeTime = moment(course.availableTeeTimes[i].utc);
+		        	    			var nextTime = priorTeeTime.add(course.teeTimeInterval, 'm');
+		        	    			var nextTeeTime = {
+		        	    				order: i+1,
+	    	        	    			formatted : nextTime.format('hh:mm A'),
+	    	        	    			utc : nextTime.toISOString()
+		    	        	    	};
+		        	    			course.availableTeeTimes.push(nextTeeTime);	        	    			
+		        	    		}
+		        	    	});
+		        	    	
+		        	    	return courseData;
 						}
 					}  
 				},

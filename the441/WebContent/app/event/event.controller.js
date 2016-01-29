@@ -14,21 +14,29 @@
     		$scope.events = events;
     		$scope.event = { };
     		$scope.editMode = true;
-    		$scope.onTimeSet = onTimeSet;
+    		$scope.pageData = {};
     		
     		$scope.courses = courses;
     		
     		$scope.$on('newEvent', function() {
     			$scope.event = {
     				name: "",
-    				course: $scope.courses[0]
-    			}
- 
+    				date: moment().format("ddd, MMM Do, YYYY"),
+    				course: $scope.courses[0],
+    				teeTimes : []
+    			};
+    			
+    			$scope.pageData = {
+    				availableTeeTimes : $scope.courses[0].availableTeeTimes,
+    				selectedTeeTime : $scope.courses[0].availableTeeTimes[0]
+    			};
+    			
     			$scope.newEvent = true;
     		});
     		
     		$scope.close = close;
     		$scope.create = create;
+    		$scope.onTimeSet = onTimeSet;
     		
     		function close() {
     			$scope.newEvent = false;
@@ -44,7 +52,7 @@
 			}
 			
 			function onTimeSet(newDate, oldDate) {
-				$scope.event.date = moment(newDate).format("MMM Do YYYY");
+				$scope.event.date = moment(newDate).format("ddd, MMM Do, YYYY");
 			}
 			
     	}

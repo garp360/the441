@@ -93,3 +93,13 @@ div.alert {
 .btn-logout:hover {
 	color: #EFEFEF;
 }
+
+.datetimepicker {
+    border-radius: 4px;
+    direction: ltr;
+    display: block;
+    margin-top: 1px;
+    -moz-user-select: none;
+    width: auto;
+    padding: 5px 10px;
+}
