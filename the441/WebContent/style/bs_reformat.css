@@ -167,3 +167,7 @@ th {
     border: none;
     border-width: 0px;
 }
+
+.form-control.datepicker-control {
+	padding-left:8px;
+}

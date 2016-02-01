@@ -32,10 +32,14 @@
 							return EventService.getUpcomingEvents();
 						},
 						courseData : function() {
-		        			return [ {id: 'crs1', name: 'Cimarrone', patronage : 'SEMI-PRIVATE', order : 2, teeTimeInterval: 8, teeTimeStart: 7, availableTeeTimes: []},                  
+		        			var courseData = [ {id: 'crs1', name: 'Cimarrone', patronage : 'SEMI-PRIVATE', order : 2, teeTimeInterval: 8, teeTimeStart: 7, availableTeeTimes: []},                  
 		        			 		 {id: 'crs2', name: 'St Johns', patronage : "SEMI-PRIVATE", order : 1, teeTimeInterval: 10, teeTimeStart: 7, availableTeeTimes: []},
 		        			 		 {id: 'crs3', name: 'South Hampton', patronage : "SEMI-PRIVATE", order : 0, teeTimeInterval: 9, teeTimeStart: 7, availableTeeTimes: []}
 		        			];
+		        			courseData.sort(function(a,b) {
+								return a.order - b.order;
+							});
+		        			return courseData;
 		        		},
 		        		courses : function (courseData) {
 		        			
@@ -44,6 +48,7 @@
 		        	    		var firstTeeTime = {
 		        	    			order: 0,
 		        	    			formatted : firstTime.format('hh:mm A'),
+		        	    			simple: firstTime.format('h:mm A'),
 		        	    			utc : firstTime.toISOString()
 		        	    		};
 		        	    		
@@ -54,6 +59,7 @@
 		        	    			var nextTeeTime = {
 		        	    				order: i+1,
 	    	        	    			formatted : nextTime.format('hh:mm A'),
+	    	        	    			simple: nextTime.format('h:mm A'),
 	    	        	    			utc : nextTime.toISOString()
 		    	        	    	};
 		        	    			course.availableTeeTimes.push(nextTeeTime);	        	    			

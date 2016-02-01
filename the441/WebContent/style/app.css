@@ -81,6 +81,19 @@ div.centered-vh {
 	box-shadow: 0px 0px 44px 20px rgba(10,15,71,0.17);
 }
 
+table.teetimes{
+	width:100%;
+}
+
+table.teetimes,
+span.teetimes {
+	margin-bottom: 6px;
+}
+
+td.teetimes-selector {
+	padding-right: 10px;
+}
+
 div.alert {
 	position: absolute;
 	top: 5px;
