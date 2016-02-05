@@ -5,9 +5,9 @@
     	.module('hb.the441')
     	.controller('EventController', EventController);
     	
-    	EventController.$inject = ['$scope', '$log', 'events', 'courses'];
+    	EventController.$inject = ['$scope', '$log', 'events', 'courses', 'EventService'];
     	
-    	function EventController ($scope, $log, events, courses) 
+    	function EventController ($scope, $log, events, courses, EventService) 
     	{
     		$scope.errMsg = null;
     		$scope.newEvent = false;
@@ -40,6 +40,7 @@
     		$scope.onChangeCourse = onChangeCourse;
     		$scope.addTeeTime = addTeeTime;
     		$scope.removeTeeTime = removeTeeTime;
+    		$scope.formatTeeTimes = formatTeeTimes;
     		
     		function close() {
     			$scope.newEvent = false;
@@ -54,7 +55,26 @@
 			};
 			
 			function create() {
-				$log.debug("EVENT = " + angular.toJson($scope.event));
+				var event = angular.copy($scope.event);
+				event.course = {
+					id: event.course.id,
+					name: event.course.name
+				};
+				var teetimes = [];
+				angular.forEach(event.teeTimes, function(teeTime) {
+					teetimes.push({
+						order: teeTime.order,
+						utc: teeTime.utc
+					});
+				})
+				event.teeTimes = teetimes;
+				
+				$log.debug("EVENT = " + angular.toJson(event));
+				EventService.save(event).then(function(event){
+					close();
+				}, function(errMsg){
+					$scope.errMsg = errMsg;
+				});
 			};
 			
 			function onTimeSet(newDate, oldDate) {
@@ -107,5 +127,19 @@
 				// default to the first tee time of the selected course
 				$scope.pageData.selectedTeeTime = $scope.event.course.availableTeeTimes[0];
 			};
+			
+			function formatTeeTimes(event) {
+				var teeTimes = "";
+				if(event.teeTimes && event.teeTimes.length > 0) {
+					
+					for(var i=0; i<event.teeTimes.length; i++) {
+						if(i>0) {
+							teeTimes = teeTimes + ", ";
+						}
+						teeTimes = teeTimes + moment(event.teeTimes[i].utc).format('h:mma');
+					}
+				}
+				return teeTimes;
+			}
     	}
 })();

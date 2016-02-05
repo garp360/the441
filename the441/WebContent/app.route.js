@@ -32,9 +32,9 @@
 							return EventService.getUpcomingEvents();
 						},
 						courseData : function() {
-		        			var courseData = [ {id: 'crs1', name: 'Cimarrone', patronage : 'SEMI-PRIVATE', order : 2, teeTimeInterval: 8, teeTimeStart: 7, availableTeeTimes: []},                  
-		        			 		 {id: 'crs2', name: 'St Johns', patronage : "SEMI-PRIVATE", order : 1, teeTimeInterval: 10, teeTimeStart: 7, availableTeeTimes: []},
-		        			 		 {id: 'crs3', name: 'South Hampton', patronage : "SEMI-PRIVATE", order : 0, teeTimeInterval: 9, teeTimeStart: 7, availableTeeTimes: []}
+		        			var courseData = [ {id: 'crs1', name: 'Cimarrone', patronage : 'SEMI-PRIVATE', order : 2, teeTimeInterval: 8, teeTimeStart: {h: 7, m:0}, availableTeeTimes: []},                  
+		        			 		 {id: 'crs2', name: 'St Johns', patronage : "SEMI-PRIVATE", order : 1, teeTimeInterval: 9, teeTimeStart: {h: 6, m:58}, availableTeeTimes: []},
+		        			 		 {id: 'crs3', name: 'South Hampton', patronage : "SEMI-PRIVATE", order : 0, teeTimeInterval: 9, teeTimeStart: {h: 7, m:0}, availableTeeTimes: []}
 		        			];
 		        			courseData.sort(function(a,b) {
 								return a.order - b.order;
@@ -44,7 +44,7 @@
 		        		courses : function (courseData) {
 		        			
 		        	    	angular.forEach(courseData, function(course){
-		        	    		var firstTime =  moment().hour(course.teeTimeStart).minute(0).second(0);
+		        	    		var firstTime =  moment().hour(course.teeTimeStart.h).minute(course.teeTimeStart.m).second(0);
 		        	    		var firstTeeTime = {
 		        	    			order: 0,
 		        	    			formatted : firstTime.format('hh:mm A'),

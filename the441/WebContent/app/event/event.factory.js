@@ -13,6 +13,7 @@
 			var memberRef = new Firebase("https://441.firebaseio.com/member");
 			var eventRef = new Firebase("https://441.firebaseio.com/event");
 
+			factory.save = save;
 			factory.getUpcomingEvents = getUpcomingEvents;
 
 			function getUpcomingEvents(credentials) 
@@ -24,6 +25,22 @@
 				}).catch(function(errMsg){
 					deferred.reject(errMsg);
 				});
+				
+				return deferred.promise;
+			}
+
+			function save(event) 
+			{
+				var deferred = $q.defer();
+				var onComplete = function(error) {
+				  if (error) {
+					  deferred.reject(errMsg);
+				  } else {
+					  deferred.resolve(getUpcomingEvents());
+				  }
+				};
+				
+				eventRef.push(event, onComplete);
 				
 				return deferred.promise;
 			}

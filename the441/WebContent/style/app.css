@@ -116,3 +116,29 @@ div.alert {
     width: auto;
     padding: 5px 10px;
 }
+
+.eventName {
+	font-weight: bold;
+}
+.eventName,
+.eventDate,
+.teeTimes {
+	font-size: .9em;
+}
+
+.teeTimes {
+	font-size: .8em;
+}
+
+.event-buttton-signup,
+.event-buttton-dropout {
+	width: 90px;
+}
+
+.event-buttton-signup {
+	
+}
+
+.event-buttton-dropout {
+	
+}
