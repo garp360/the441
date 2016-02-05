@@ -133,12 +133,14 @@ div.alert {
 .event-buttton-signup,
 .event-buttton-dropout {
 	width: 90px;
+	color: #fefefe;
+	font-weight: bold;
 }
 
 .event-buttton-signup {
-	
+	background-color: #368528;
 }
 
 .event-buttton-dropout {
-	
+	background-color: #852020;
 }
