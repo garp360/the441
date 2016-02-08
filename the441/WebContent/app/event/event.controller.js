@@ -5,9 +5,9 @@
     	.module('hb.the441')
     	.controller('EventController', EventController);
     	
-    	EventController.$inject = ['$scope', '$log', 'events', 'courses', 'EventService'];
+    	EventController.$inject = ['$scope', '$log', 'member', 'events', 'courses', 'EventService'];
     	
-    	function EventController ($scope, $log, events, courses, EventService) 
+    	function EventController ($scope, $log, member, events, courses, EventService) 
     	{
     		$scope.errMsg = null;
     		$scope.newEvent = false;
@@ -16,6 +16,8 @@
     		$scope.editMode = true;
     		$scope.pageData = { };
     		$scope.courses = courses;
+    		$scope.member = member;
+    		$scope.isSignedUp = isSignedUp;
     		
     		$scope.$on('newEvent', function() {
     			$scope.event = {
@@ -41,6 +43,9 @@
     		$scope.addTeeTime = addTeeTime;
     		$scope.removeTeeTime = removeTeeTime;
     		$scope.formatTeeTimes = formatTeeTimes;
+    		$scope.playerCount = playerCount;
+    		$scope.signUp = signUp;
+    		$scope.dropOut = dropOut;
     		
     		function close() {
     			$scope.newEvent = false;
@@ -140,6 +145,37 @@
 					}
 				}
 				return teeTimes;
+			}
+			
+			function isSignedUp(event) {
+				return event != null && event.members != null && event.members[$scope.member.$id] != null;
+			} 
+			
+			function signUp(event) {
+				EventService.signUp(event, getMemberJson($scope.member));
+			}
+
+			function dropOut(event) {	
+				EventService.dropOut(event, getMemberJson($scope.member));
+			}
+			
+			function playerCount(event) {
+				var count = 0;
+				if(event != null && event.members != null) {
+					angular.forEach(event.members, function(member) {
+						count += 1;
+					});
+				}	
+				return count;
+			}
+			
+			function getMemberJson(member) {
+				var json = {
+					firstName: member.firstName,
+					lastName: member.lastName,
+					uid: member.$id
+				}
+				return json;
 			}
     	}
 })();

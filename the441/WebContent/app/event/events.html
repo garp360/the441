@@ -74,9 +74,10 @@
 				</div>
 				<div class="col-xs-4">
 					<div>
-						<input class="btn btn-default pull-right event-buttton-signup" type="button" value="Sign Up!">
-						<input class="btn btn-default pull-right event-buttton-dropout" type="button" value="Drop Out!">
+						<input ng-click="signUp(event)" ng-show="!isSignedUp(event)" class="btn btn-default pull-right event-buttton-signup" type="button" value="Sign Up!">
+						<input ng-click="dropOut(event)" ng-show="isSignedUp(event)" class="btn btn-default pull-right event-buttton-dropout" type="button" value="Drop Out!">
 					</div>
+					<div class="event-member-count">Confirmed: {{playerCount(event)}}</div>
 				</div>
 			</div>
 		</div>

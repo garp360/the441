@@ -17,6 +17,7 @@
 			factory.login = login;
 			factory.logout = logout;
 			factory.register = register;
+			factory.getMember = getMember;
 			
 			function isAuthenticated() 
 			{
@@ -50,6 +51,12 @@
 				deferred.resolve(isAuthenticated())
 				
 				return deferred.promise;
+			}
+			
+			function getMember() {
+				var authData = $firebaseAuth(authRef).$getAuth();
+				$log.debug("getMember: authData=" + authData.uid);
+				return $firebaseObject(memberRef.child(authData.uid)).$loaded();
 			}
 
 			function register(registration) 

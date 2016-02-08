@@ -28,6 +28,9 @@
 					templateUrl: 'app/event/events.html',
 					controller: 'EventController',
 					resolve: {
+						member : function(AuthService) {
+							return AuthService.getMember();
+						},
 						events : function(EventService) {
 							return EventService.getUpcomingEvents();
 						},

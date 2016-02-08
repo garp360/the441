@@ -132,15 +132,14 @@ div.alert {
 
 .event-buttton-signup,
 .event-buttton-dropout {
+	width: 80px;
+}
+
+.event-member-count {
 	width: 90px;
-	color: #fefefe;
-	font-weight: bold;
-}
-
-.event-buttton-signup {
-	background-color: #368528;
-}
-
-.event-buttton-dropout {
-	background-color: #852020;
+	height:24px;
+	font-size: .9em;
+	text-align: center;
+	vertical-align: baseline;
+	margin: 5px 2px 2px 0px;
 }
