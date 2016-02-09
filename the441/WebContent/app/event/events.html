@@ -73,11 +73,11 @@
 					<div class="teeTimes">{{formatTeeTimes(event)}}</div>
 				</div>
 				<div class="col-xs-4">
-					<div>
-						<input ng-click="signUp(event)" ng-show="!isSignedUp(event)" class="btn btn-default pull-right event-buttton-signup" type="button" value="Sign Up!">
-						<input ng-click="dropOut(event)" ng-show="isSignedUp(event)" class="btn btn-default pull-right event-buttton-dropout" type="button" value="Drop Out!">
+					<div class="pull-right">
+						<input ng-click="signUp(event)" ng-show="!isSignedUp(event)" class="btn btn-default event-buttton-signup" type="button" value="Sign Up!">
+						<input ng-click="dropOut(event)" ng-show="isSignedUp(event)" class="btn btn-default event-buttton-dropout" type="button" value="Drop Out!">
+						<div class="event-member-count">Confirmed: {{playerCount(event)}}</div>
 					</div>
-					<div class="event-member-count">Confirmed: {{playerCount(event)}}</div>
 				</div>
 			</div>
 		</div>

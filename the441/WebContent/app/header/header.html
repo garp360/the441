@@ -1,24 +1,19 @@
 <table>
 	<tr>
-<!-- 		<th><i class="fa fa-lg fa-navicon pull-left btn-menu"></i></th> -->
 		<td>
-
-<!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-link dropdown-toggle pull-left btn-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-lg fa-navicon"></i></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><button type="button" ng-click="createEvent()" class="btn btn-link">New Event</button></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-
-
-</td>
+			<div class="btn-group">
+				<button type="button"
+					class="btn btn-link dropdown-toggle pull-left btn-menu"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-lg fa-navicon"></i></span>
+				</button>
+				<ul class="dropdown-menu">
+					<li><button type="button" ng-click="createEvent()" class="btn btn-link">New Event</button></li>
+					<li role="separator" class="divider"></li>
+					<li><button type="button" class="btn btn-link">Import Handicaps</button></li>
+				</ul>
+			</div>
+		</td>
 		<th class="title">{{header}}</th>
 		<th><button type="button" ng-click="logout()" class="btn btn-link pull-right btn-logout">Logout</button></th>
 	</tr>

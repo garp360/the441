@@ -39,6 +39,8 @@ div.app>div.content {
 	top: 35px;
 	bottom: 35px;
 	background-color: #efefef;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 div.app>div.header {
@@ -142,4 +144,11 @@ div.alert {
 	text-align: center;
 	vertical-align: baseline;
 	margin: 5px 2px 2px 0px;
+	padding-right: 6px;
+}
+
+.event-browser {
+	overflow-x: hidden;
+	overflow-y: auto; 
+	
 }
